@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Main {
 static Scanner lee = new Scanner(System.in);
-    static int a,b,c,edad;
+    static int a,b,c,edad,reinicio;
     static boolean cedula;
     static double n1,n2,n3
             ,sueldo,horaExtra
@@ -15,23 +17,27 @@ static Scanner lee = new Scanner(System.in);
         funtionDescuento mayor = new funtionDescuento();
         funtionSuma sum = new funtionSuma();
         funcionTabla tabla = new funcionTabla();
-
+        funcionFor fFor = new funcionFor();
+        funcionTablasMultiplicar mult = new funcionTablasMultiplicar();
         int datos;
         boolean noNumber = false;
     do{
     try {
         do {
             System.out.print("Que dato quiere hacer: " +
-                    "\n1.- Descuento." +
-                    "\n2.- Funcion Interfaz." +
-                    "\n3.- Numero Mayor." +
-                    "\n4.- Saber si es positivo o negativo." +
-                    "\n5.- Funciones basicas." +
-                    "\n6.- Funcion Promedio." +
-                    "\n7.- Funcion Sueldo." +
-                    "\n8.- Funcion Descuento." +
-                    "\n9.- Funcion Tabla de multiplicar" +
-                    "\n10.- Salir.");
+                    "\n1.-  Descuento." +
+                    "\n2.-  Funcion Interfaz." +
+                    "\n3.-  Numero Mayor." +
+                    "\n4.-  Saber si es positivo o negativo." +
+                    "\n5.-  Funciones basicas." +
+                    "\n6.-  Funcion Promedio." +
+                    "\n7.-  Funcion Sueldo." +
+                    "\n8.-  Funcion Descuento." +
+                    "\n9.-  Funcion Tabla de multiplicar." +
+                    "\n10.- Funcion For." +
+                    "\n11.- Tabla de multiplicar." +
+                    "\n30.- Salir.\n" +
+                    "Dato a elegir: ");
             datos = lee.nextInt();
             noNumber = true;
             switch (datos) {
@@ -60,33 +66,39 @@ static Scanner lee = new Scanner(System.in);
                     funtionDescuento();
                     break;
                 case 9:
-                    System.out.println("Ingrese el numero de la tabla que necesite: ");
+                    System.out.print("Ingrese el numero de la tabla que necesite: ");
                     a = lee.nextInt();
                     tabla.main(a);
                     break;
                 case 10:
+                    fFor.main();
+                    break;
+                case 11:
+                    mult.main();
+                    break;
+                case 30:
                     System.out.println("Gracias por su eleccion c:.");
-                    noNumber = true;
+                   exit(200);
                     break;
                 default:
                     System.out.println("No eligio un numero correcto");
                     break;
             }
-        }while (datos > 8  || datos < 1);
-        System.out.println("Quiere volver a reiniciar el programa:\n 1. Si\n 2. No ");
-        int reinicio = lee.nextInt();
+        }while (datos > 31  || datos < 1);
+        System.out.println("\nQuiere volver a reiniciar el programa:\n 1. Si\n 2. No ");
+        reinicio = lee.nextInt();
         if(reinicio == 1){
             noNumber = false;
         }else if ( reinicio == 2){
             noNumber = true;
-            System.out.println("Gracias por usar el programa.");
+            System.out.println("\nGracias por usar el programa.");
         }else {
-            System.out.println("Ingreso un dato incorrecto, Adios!!");
+            System.out.println("\nIngreso un dato incorrecto, Adios!!");
         }
 
         } catch(Exception e){
-            System.out.println("Se tiene un error: " + e);
-        System.out.println("Ingresaste un dato no numérico");
+            System.out.println("\nSe tiene un error: " + e);
+        System.out.println("\nIngresaste un dato no numérico\n");
         noNumber = false;
         lee.nextLine();
         }
